@@ -1,0 +1,51 @@
+                                #include <iostream>
+                                #include <vector>
+                                #include <math.h>
+
+                                int main() {
+                                  ///declarations This is where the get ready starts 
+                                  char response;
+                                  //prompting the user
+                                  bool keep_going = true;
+                                  std::cout << "Would you like to see all the prime numbers between 0 and 100" << std::endl;
+                                  std::cin >> response;
+                                  //this is whether they choose to continue or not 
+                                  if (response == 'y') { // This is where the "Get ready" phase ends 
+                                    //while (keep_going) { // i added the while loop so it can keep going hopefully pass the two 
+                                      //declaration, this is where the phase " reserve some memory" starts 
+                                    std::vector<int>prime;
+                                    prime.push_back(2);
+                                    //prime.push_back(3);
+                                    prime.reserve(10); // This is performance code and that means we get extra space in advance just incase.     
+                                    // the for loop for the currentprime number , for every prime i already know about 
+                                    //while(prime.size() < 100 ) it didnt make a difference in my results, it doesnt work 
+                                    for (int n = 3; n < 100; n++) {
+                                      bool is_prime = true;
+                                      int currentprimenumber = 0;
+                                      for (int i = 0; i < prime.size(); ++i) { // in actuality i was doing check every number from 1 to 100 and see if this prime is a factor   
+                                        // int currentprimenumber = prime[i]; this had to be switch for the one below because the variables of the lefthand side is reciever, while the variables of the right handside is giver and only one equal sign so we are having the variables actually equate to eachother other then just “compare.
+                                         currentprimenumber = prime[i];
+                                        // the for loop for that check from 1 to 100
+                                        // checks each number to see if it’s a prime
+                                        if ( n % currentprimenumber == 0) {
+                                          is_prime = false;
+                                          break;
+
+
+                                              // std::cout << "the prime numbers goes as following" << prime_number_list <<std:: endl; I only wrote this here thinking that i would like the user to see all of the prime numbers only 
+                                        } // if statement for the i%currentprimenumber
+                                      }// the for loop statement (int i =0; i< 100; ++i)
+                                      if (is_prime) {
+                                        prime.push_back(n);
+                                        std::cout << n << std::endl;
+
+                                      }
+                                    } // for statement (int = 1; i< prime.size(); ++i)
+
+                                  }// if(response ='y')
+
+                                   // This is just incase they are unwilling to participate 
+                                  else {
+                                    std::cout << "have a good day bro  " << std::endl;
+                                  }
+                                }
